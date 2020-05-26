@@ -1,0 +1,2 @@
+# mcsnapshots
+将Minecraft最新快照转为Markdown格式
