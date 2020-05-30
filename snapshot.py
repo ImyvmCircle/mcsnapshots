@@ -4,15 +4,13 @@ from bs4 import BeautifulSoup
 from tomd import Tomd
 import os
 
-
-
 # 写文件
-def writedoc(text, name):
+def writedoc(text, dirname,filename):
 
-    with open("/home/minecraftnews/snapshots/" + name + "/" + name + ".md", 'w', encoding='utf-8') as f:
+    with open("../minecraft/snapshots/" + dirname + "/" + filename + ".md", 'w', encoding='utf-8') as f:
         #写文件
         f.write(text)
-    print(name + ".md 写入完成" + "\n")
+    print(filename + ".md 写入完成" + "\n")
 
 # 创建目录
 def mkdir(path):
@@ -35,6 +33,7 @@ def mkdir(path):
 # 获得含有对应标题内容的（string = 'snapshot'）最新链接地址
 def get_url(string):
     url = "https://minecraft.net/en-us/feeds/community-content/rss"
+    # data = feedparser.parse(url)
     data = feedparser.parse(url)
 
     link_list = []
@@ -48,6 +47,7 @@ def get_soup(url):
     headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'}
 
     req = request.Request(url, headers=headers)
+
     with request.urlopen(req) as response:
         # 读取response里的内容，并转码
         html_doc = response.read().decode('utf-8') # 默认即为 utf-8
@@ -78,6 +78,9 @@ def soup_snapshot_2md(soup):
 
     # 获得快照版本
     head_name = head[head.rfind(" ") + 1:]
+    dirname = head_name
+    filename = head_name
+    
 
     # 文章主体转换为markdown
     body_html = str()
@@ -99,9 +102,9 @@ def soup_snapshot_2md(soup):
     text = text.replace("Published", "**Published**")
 
     # 创建目录
-    mkdir("/home/minecraftnews/snapshots/" + head_name)
+    mkdir("../minecraft/snapshots/" + dirname)
 
     # 写入文件
-    writedoc(text, head_name)
+    writedoc(text, dirname, filename)
 
 soup_snapshot_2md(get_soup(get_url('snapshot')))
