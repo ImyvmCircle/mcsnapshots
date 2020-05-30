@@ -8,6 +8,10 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+    - cron: '30 22 * * *'
+    - cron: '30 14 * * *'
+    - cron: '30 15 * * *'
 
 jobs:
   build:
