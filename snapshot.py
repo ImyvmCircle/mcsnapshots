@@ -7,7 +7,7 @@ import os
 # 写文件
 def writedoc(text, dirname,filename):
 
-    with open("../snapshots/" + dirname + "/" + filename + ".md", 'w', encoding='utf-8') as f:
+    with open("./snapshots/" + dirname + "/" + filename + ".md", 'w', encoding='utf-8') as f:
         #写文件
         f.write(text)
     print(filename + ".md 写入完成" + "\n")
@@ -102,7 +102,7 @@ def soup_snapshot_2md(soup):
     text = text.replace("Published", "**Published**")
 
     # 创建目录
-    mkdir("../snapshots/" + dirname)
+    mkdir("./snapshots/" + dirname)
 
     # 写入文件
     writedoc(text, dirname, filename)
