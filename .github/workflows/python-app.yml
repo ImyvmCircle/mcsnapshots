@@ -30,7 +30,7 @@ jobs:
         python snapshot.py
     - name: Commit files
       run: |
-        git add .
+        git add -A
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -m "Get snapshots" -a
