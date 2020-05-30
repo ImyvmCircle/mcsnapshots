@@ -1,4 +1,2 @@
-feedparser
-urllib
-bs4
-tomd
+six==1.12.0
+
