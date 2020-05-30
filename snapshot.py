@@ -92,7 +92,7 @@ def soup_snapshot_2md(soup):
     output = output.replace("&lt;","<")
     output = output.replace("&gt;",">")
     output = output.replace("<li>","- ")
-    output = output.replace("<li/>","")
+    output = output.replace("</li>\n","")
     text += output
 
     # 文章作者
