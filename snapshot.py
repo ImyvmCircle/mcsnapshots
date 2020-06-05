@@ -109,4 +109,4 @@ def soup_snapshot_2md(soup):
     # 写入文件
     writedoc(text, dirname, filename)
 
-soup_snapshot_2md(get_soup(get_url('snapshot')))
+soup_snapshot_2md(get_soup(get_url('release')))
