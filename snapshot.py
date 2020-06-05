@@ -7,7 +7,7 @@ import os
 # 写文件
 def writedoc(text, dirname,filename):
 
-    with open("./" + dirname + "/" + filename + ".md", 'w', encoding='utf-8') as f:
+    with open(dirname + "/" + filename + ".md", 'w', encoding='utf-8') as f:
         #写文件
         f.write(text)
     print(filename + ".md 写入完成" + "\n")
@@ -77,11 +77,11 @@ def soup_snapshot_2md(soup):
     text += "## " + lead + "\n"
 
     # 获得快照版本
-    if "Snapshot" in head:
+    if "snapshot" in head:
         head_name = head[head.rfind(" ") + 1:]
         dirname = "./snapshots/" + head_name
         filename = head_name
-    elif "Pre-release" in head:
+    elif "pre-release" in head:
         head_name = head[head.lfind(" ") + 1:]
         dirname = "./pre_release/" + head_name
         filename = head_name
