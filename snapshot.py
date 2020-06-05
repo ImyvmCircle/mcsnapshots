@@ -83,7 +83,7 @@ def soup_snapshot_2md(soup):
         filename = head_name
         print(dirname)
     elif "pre-release" in head.lower():
-        head_name = head[head.lfind(" ") + 1:]
+        head_name = head[head.find(" ") + 1:]
         dirname = "./pre_release/" + head_name
         filename = head_name
         print(dirname)
