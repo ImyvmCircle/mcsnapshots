@@ -109,7 +109,7 @@ def soup_snapshot_2md(soup):
     text = text.replace("Published", "**Published**")
 
     # 创建目录
-    mkdir("./snapshots/" + dirname)
+    mkdir("./" + dirname)
 
     # 写入文件
     writedoc(text, dirname, filename)
