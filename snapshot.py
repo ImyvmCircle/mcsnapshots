@@ -81,11 +81,12 @@ def soup_snapshot_2md(soup):
         head_name = head[head.rfind(" ") + 1:]
         dirname = "./snapshots/" + head_name
         filename = head_name
+        print(dirname)
     elif "pre-release" in head:
         head_name = head[head.lfind(" ") + 1:]
         dirname = "./pre_release/" + head_name
         filename = head_name
-    
+        print(dirname)
 
     # 文章主体转换为markdown
     body_html = str()
