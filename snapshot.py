@@ -79,11 +79,11 @@ def soup_snapshot_2md(soup):
     # 获得快照版本
     if "Snapshot" in head:
         head_name = head[head.rfind(" ") + 1:]
-        dirname = "snapshots/" + head_name
+        dirname = "./snapshots/" + head_name
         filename = head_name
     elif "Pre-release" in head:
         head_name = head[head.lfind(" ") + 1:]
-        dirname = "pre_release/" + head_name
+        dirname = "./pre_release/" + head_name
         filename = head_name
     
 
@@ -109,7 +109,7 @@ def soup_snapshot_2md(soup):
     text = text.replace("Published", "**Published**")
 
     # 创建目录
-    mkdir("./" + dirname)
+    mkdir(dirname)
 
     # 写入文件
     writedoc(text, dirname, filename)
