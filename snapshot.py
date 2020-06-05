@@ -77,12 +77,12 @@ def soup_snapshot_2md(soup):
     text += "## " + lead + "\n"
 
     # 获得快照版本
-    if "snapshot" in head:
+    if "snapshot" in head.lower():
         head_name = head[head.rfind(" ") + 1:]
         dirname = "./snapshots/" + head_name
         filename = head_name
         print(dirname)
-    elif "pre-release" in head:
+    elif "pre-release" in head.lower():
         head_name = head[head.lfind(" ") + 1:]
         dirname = "./pre_release/" + head_name
         filename = head_name
