@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from tomd import Tomd
 import os
 
+
 # 写文件
 def writedoc(text, dirname,filename):
 
@@ -76,7 +77,7 @@ def soup_snapshot_2md(soup):
     text += "# " + head + "\n"
     text += "## " + lead + "\n"
 
-    # 获得快照版本
+    # 获得版本
     if "snapshot" in head.lower():
         head_name = head[head.rfind(" ") + 1:]
         dirname = "./snapshots/" + head_name
@@ -87,7 +88,17 @@ def soup_snapshot_2md(soup):
         dirname = "./pre_release/" + head_name
         filename = head_name
         print(dirname)
-
+    elif "candidate" in head.lower():
+        head_name = head[head.find(" ") + 1:]
+        dirname = "./candidate/" + head_name
+        filename = head_name
+        print(dirname)
+    elif "edition" in head.lower():
+        head_name = head[head.find(" ") + 1:]
+        dirname = "./candidate/" + head_name
+        filename = head_name
+        print(dirname)
+       
     # 文章主体转换为markdown
     body_html = str()
     output = str()
@@ -115,5 +126,10 @@ def soup_snapshot_2md(soup):
     # 写入文件
     writedoc(text, dirname, filename)
 
-soup_snapshot_2md(get_soup(get_url('snapshot')))
-soup_snapshot_2md(get_soup(get_url('pre-release')))
+try:
+    soup_snapshot_2md(get_soup(get_url('snapshot')))
+    soup_snapshot_2md(get_soup(get_url('pre-release')))
+    soup_snapshot_2md(get_soup(get_url('candidate')))
+    soup_snapshot_2md(get_soup(get_url('edition')))
+except IndexError:
+    print("列表中没有可拉取的文件")
