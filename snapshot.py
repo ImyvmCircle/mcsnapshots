@@ -128,8 +128,20 @@ def soup_snapshot_2md(soup):
 
 try:
     soup_snapshot_2md(get_soup(get_url('snapshot')))
+except IndexError:
+    print("列表中没有可拉取的快照")
+
+try:
     soup_snapshot_2md(get_soup(get_url('pre-release')))
+except IndexError:
+    print("列表中没有可拉取的预发布版")
+
+try:
     soup_snapshot_2md(get_soup(get_url('candidate')))
+except IndexError:
+    print("列表中没有可拉取的最终测试版")
+
+try:
     soup_snapshot_2md(get_soup(get_url('edition')))
 except IndexError:
-    print("列表中没有可拉取的文件")
+    print("列表中没有可拉取的正式版")
