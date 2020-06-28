@@ -78,7 +78,6 @@ def soup_snapshot_2md(soup):
     text += "## " + lead + "\n"
 
     # 获得版本
-    dirname = ""
     if "snapshot" in head.lower():
         head_name = head[head.rfind(" ") + 1:]
         dirname = "./snapshots/" + head_name
@@ -94,7 +93,7 @@ def soup_snapshot_2md(soup):
         dirname = "./candidate/" + head_name
         filename = head_name
         print(dirname)
-    elif "edition" in head.lower():
+    elif "edition" or "released" in head.lower():
         head_name = head[head.find(" ") + 1:]
         dirname = "./edition/" + head_name
         filename = head_name
@@ -148,6 +147,6 @@ except IndexError:
     print("列表中没有可拉取的正式版")
 
 try:
-    soup_snapshot_2md(get_soup(get_url('nether')))
+    soup_snapshot_2md(get_soup(get_url('nether update java')))
 except IndexError:
-    print("列表中没有可拉取的正式版")
+    print("列表中没有可拉取的nether update java")
