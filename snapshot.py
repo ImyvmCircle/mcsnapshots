@@ -154,4 +154,4 @@ except IndexError:
 try:
     soup_snapshot_2md(get_soup(get_url('nether-update-java')))
 except IndexError:
-    print("列表中没有可拉取的nether update java")
+    print("列表中没有可拉取的nether-update-java")
