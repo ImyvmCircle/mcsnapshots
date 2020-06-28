@@ -95,7 +95,7 @@ def soup_snapshot_2md(soup):
         print(dirname)
     elif "edition" in head.lower():
         head_name = head[head.find(" ") + 1:]
-        dirname = "./candidate/" + head_name
+        dirname = "./edition/" + head_name
         filename = head_name
         print(dirname)
        
