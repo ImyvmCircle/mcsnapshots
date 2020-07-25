@@ -119,7 +119,10 @@ def soup_snapshot_2md(soup):
 
     # 文章作者
     author = author_tag.dl.get_text()
-    author_img_url = f"![]({'https://www.minecraft.net'}{author_tag.img['src']})"
+    try:
+        author_img_url = f"![]({'https://www.minecraft.net'}{author_tag.img['src']})"
+    except TypeError:
+        author_img_url = f"![]()"
     pubdate = author_tag.find(class_="pubDate").attrs['data-value'][:10]
     text += (author.rstrip("\n") + "\n" + pubdate + "\n" + author_img_url + "\n")
     text = text.replace("Written By", "**Written By**")
